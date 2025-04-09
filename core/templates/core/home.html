@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alô, Paixão!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vermelho-labios: #D12326;
+            --pele-clara: #FFFDFB;
+            --preto-cabelo: #0C0C0C;
+            --verde-turquesa: #2CB9A8;
+            --laranja-queimado: #F29A23;
+            --vermelho-topo: #E02828;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--pele-clara);
+            color: var(--preto-cabelo);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--pele-clara);
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://s2-g1.glbimg.com/WS5Jme_RgSBPoxUCIOKHG5GCMAE=/0x0:1417x1359/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2023/w/H/eMSJqoSL6NmIjH8MWA7A/galivrofotocapa.jpg') center/cover no-repeat;
+            background-attachment: fixed;
+        }
+
+        .header-content {
+            z-index: 1;
+            padding: 0 1rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        h1 {
+            font-family: 'Abril Fatface', serif;
+            font-size: 4rem;
+            color: var(--vermelho-labios);
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            font-family: 'Abril Fatface', serif;
+            font-size: 1.5rem;
+            color: var(--pele-clara);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        section h2 {
+            font-family: 'Abril Fatface', serif;
+            font-size: 2.5rem;
+            color: var(--vermelho-topo);
+            margin-bottom: 1rem;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--preto-cabelo);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin-top: 2rem;
+            background: linear-gradient(to right, var(--vermelho-topo), var(--laranja-queimado));
+            color: white;
+            font-weight: bold;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--verde-turquesa);
+            color: var(--preto-cabelo);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>Nosso amor</h1>
+            <p class="subtitle">A todo vapor</p>
+        </div>
+    </header>
+
+    <section>
+        <h2>Intenso e Ardente como a gente.</h2>
+        <p>
+            Favorita nosso site. Vamos sempre ter interações por aqui :)
+        </p>
+        <a href="https://www.youtube.com/watch?v=-nY1qJcdKdE" target="_blank" class="btn">Escutar no YouTube</a>
+    </section>
+
+    <footer>
+        made with ❤️ by yofep
+    </footer>
+
+</body>
+
+</html>
