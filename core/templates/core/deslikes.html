@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coisas que meu namorado não gosta</title>
+    <style>
+        :root {
+            --rosa-pastel-claro: #f6c9d3;
+            --lilas-pastel: #d0a0d8;
+            --azul-pastel-claro: #a3d4f7;
+            --amarelo-pastel: #f1e1a6;
+            --cor-fundo: #fff8f0;
+            --cor-texto: #333;
+            --cor-botao: #f1b3d5;
+            --cor-botao-hover: #e88c9c;
+            --cor-botao-active: #d66b80;
+            --cor-borda: #e3a9c4;
+            --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--fonte);
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding-bottom: 80px;
+            /* Espaço para o botão */
+        }
+
+        header {
+            background: linear-gradient(to right, var(--rosa-pastel-claro), var(--lilas-pastel));
+            padding: 2rem;
+            text-align: center;
+            color: var(--cor-texto);
+            border-bottom: 3px solid var(--cor-borda);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        header p {
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            font-style: italic;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 1rem;
+            flex: 1;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: var(--azul-pastel-claro);
+            border-left: 6px solid var(--cor-borda);
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        li:nth-child(even) {
+            background-color: var(--amarelo-pastel);
+        }
+
+        li:hover {
+            transform: scale(1.05);
+            transition: transform 0.2s ease;
+        }
+
+        footer {
+            background-color: var(--rosa-pastel-claro);
+            text-align: center;
+            padding: 1.5rem;
+            color: var(--cor-texto);
+            font-size: 1rem;
+            border-top: 3px solid var(--cor-borda);
+        }
+
+        footer p {
+            margin: 0.3rem 0;
+        }
+
+        .mico-btn {
+            background-color: var(--cor-botao);
+            color: var(--cor-texto);
+            border: none;
+            border-radius: 20px;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            /* Espaço entre a descrição e o botão */
+            align-self: flex-end;
+            /* Alinha o botão à direita do card */
+        }
+
+        .mico-btn:hover {
+            background-color: var(--cor-botao-hover);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .mico-btn:active {
+            background-color: var(--cor-botao-active);
+            transform: scale(0.98);
+        }
+
+        .mico-icon {
+            font-size: 1.5rem;
+        }
+
+        .mico-count {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .item-description {
+            font-size: 1rem;
+            color: #555;
+            font-style: italic;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            li {
+                padding: 1rem;
+            }
+
+            .mico-btn {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Coisas que meu namorado não gosta 😒</h1>
+        <p>as vezes é só viadagem dele mesmo</p>
+    </header>
+    <main>
+        <ul>
+            {% for deslike in deslikes %}
+            <li>
+                <strong>{{ deslike.title }}</strong>
+                <p class="item-description">{{ deslike.description }}</p>
+                <button class="mico-btn" data-id="{{ deslike.id }}">
+                    Mico 😜 <span class="mico-count">{{ deslike.likes_count }}</span>
+                </button>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+    <footer>
+        <p>Feito com deboche por <strong>yofep 🤭</strong></p>
+        <p>"Nada mais vai nos prender, nada mais vai nos juntar..." — Gal Costa 🎶</p>
+    </footer>
+
+    <!-- CSRF Token Form -->
+    <form method="post" style="display: none;">
+        {% csrf_token %}
+    </form>
+
+    <script>
+        const micoButtons = document.querySelectorAll('.mico-btn');
+
+        micoButtons.forEach((btn) => {
+            let count = parseInt(btn.querySelector('.mico-count').textContent);
+
+            btn.addEventListener('click', () => {
+                const deslikeId = btn.getAttribute('data-id');
+
+                // Fazer a requisição AJAX para o Django
+                fetch(`/atualizar-mico/${deslikeId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value // Adiciona o CSRF token
+                    },
+                    body: JSON.stringify({ action: 'increment' })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            count = data.new_count; // Atualiza o contador com o valor que o Django retornou
+                            const countDisplay = btn.querySelector('.mico-count');
+                            countDisplay.textContent = count;
+                        } else {
+                            alert('Erro ao atualizar o mico.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro:', error);
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>
